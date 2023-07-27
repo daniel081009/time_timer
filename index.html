@@ -1,53 +1,51 @@
 <!DOCTYPE html>
 <html lang="en" >
-
 <head>
   <meta charset="UTF-8">
-  <title>ephemer.io</title>
-  
-  
+  <title>Time_Timer</title>
   <link rel='stylesheet prefetch' href='https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.css'>
-
-      <link rel="stylesheet" href="css/style.css">
-
-  
+  <link rel="stylesheet" href="css/style.css">
+  <link rel="icon" href="./favicon.ico" type="image/x-icon" />
+  <link rel="manifest" href="./manifest.json">
+  <script>
+      if ("serviceWorker" in navigator) {
+        window.addEventListener("load", () => {
+          navigator.serviceWorker.register("./sw.js")
+            .then(registration => {
+              console.log("Service Worker registered:", registration);
+            })
+            .catch(error => {
+              console.error("Service Worker registration failed:", error);
+            });
+        });
+      }
+    </script>
 </head>
-
 <body>
-
   <div id="wrapper">
- 
   <div id="displayer">
   </div>
-    
   <div id="timer">
-    <form>
-      <input type="number" id="min" min="0" max="59" value="00" 
-             oninput="validity.valid||(value='');" placeholder="59"/>
-      <span>:</span>
-      <input type="number" id="sec" min="0" max="60" value="00" 
-             oninput="validity.valid||(value='');" />
-      <input type="button" id="start" value="&#xf04b;" onclick="play()" />
-      <input type="button" id="stop" value="&#xf04c;" onclick="pause()" />
-      <input type="button" id="unstop" value="&#xf04b;" onclick="replay()" />
-      <input type="button" id="restart" value="&#xf021;" onclick="over()" />
-    </form>
+      <form>
+        <input type="number" id="min" min="0" max="59" value="20" 
+              oninput="validity.valid||(value='');" placeholder="59"/>
+        <span>:</span>
+        <input type="number" id="sec" min="0" max="60" value="0" 
+              oninput="validity.valid||(value='');" />
+        <input type="text" id="mission" name="mission"
+        placeholder="완료하고 싶은 일">
+        <input type="button" id="start" value="&#xf04b;" onclick="play()" />
+        <input type="button" id="stop" value="&#xf04c;" onclick="pause()" />
+        <input type="button" id="unstop" value="&#xf04b;" onclick="replay()" />
+        <input type="button" id="restart" value="&#xf021;" onclick="over()" />
+      </form>
+    </div>
+    
+    <audio id="audio">
+      <source src="ring.mp3" type="audio/mpeg">
+    </audio>
   </div>
-  
-  <audio id="audio">
-    <source src="ring.mp3" type="audio/mpeg">
-    Your browser does not support the audio element.
-  </audio>
-
-</div>
-  
-  
-
     <script  src="js/index.js"></script>
-
-
-
-
 </body>
 
 </html>

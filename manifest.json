@@ -1,0 +1,12 @@
+{
+    "name": "Time_Timer",
+    "short_name": "Time!",
+    "description": "cuntrol your time",
+    "icons":[
+      {"src":"./icon/1x/icon.png","sizes":"512x512","type":"image/png"}
+    ],
+    "start_url": "./index.html",
+    "display": "standalone",
+    "background_color": "#1f1f1f",
+    "theme_color": "#1f1f1f"
+  }
